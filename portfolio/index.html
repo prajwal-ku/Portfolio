@@ -2,872 +2,922 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Prajwal Kudapane's Portfolio</title>
 <style>
-  /* Reset */
+  /* Reset and base */
   * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  html, body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #0f2027;  /* dark blue to teal gradient */
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: #fff;
-    height: 100vh;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
+    margin: 0; padding: 0; box-sizing: border-box;
     scroll-behavior: smooth;
   }
-
-  /* Container */
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px 60px;
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #f0f0f0;
+    min-height: 100vh;
+    overflow-x: hidden;
   }
-
-  /* Header */
-  header {
+  a {
+    color: #61dafb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover {
+    color: #21a1f1;
+  }
+  /* Navbar */
+  nav {
     position: fixed;
+    width: 100%;
+    background: rgba(15, 32, 39, 0.95);
+    backdrop-filter: blur(8px);
     top: 0;
     left: 0;
-    width: 100%;
-    background: rgba(15, 32, 39, 0.9);
-    backdrop-filter: saturate(180%) blur(10px);
-    border-bottom: 1px solid #155aeb;
-    z-index: 9999;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.7);
   }
-  nav {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 15px 20px;
+  nav .nav-container {
+    max-width: 1200px;
+    margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
+    padding: 1.2rem 2rem;
   }
   nav .logo {
+    font-size: 1.6rem;
     font-weight: 700;
-    font-size: 1.5rem;
     letter-spacing: 2px;
-    color: #2196f3;
-    user-select: none;
+    color: #61dafb;
   }
   nav ul {
     list-style: none;
     display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
+    gap: 2rem;
   }
   nav ul li {
-    font-weight: 600;
+    font-weight: 500;
   }
   nav ul li a {
-    color: #a8c9ff;
-    text-decoration: none;
     font-size: 1rem;
-    transition: color 0.3s ease;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-  nav ul li a:hover,
-  nav ul li a:focus {
-    color: #2196f3;
-  }
-  .github-btn {
-    background: #2196f3;
-    color: #0f2027;
-    font-weight: 700;
-    padding: 8px 18px;
-    border-radius: 24px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 6px 15px rgba(33,150,243,0.5);
-    font-size: 1rem;
-    transition: background 0.3s ease, transform 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-  }
-  .github-btn:hover,
-  .github-btn:focus {
-    background: #1964c8;
-    transform: scale(1.05);
-  }
-  .github-icon {
-    font-size: 1.4rem;
-  }
-  .linkedin-icon, .instagram-icon {
-    width: 20px;
-    height: 20px;
-    fill: #2196f3;
-  }
-  .social-icons a:hover svg,
-  .social-icons a:focus svg {
-    fill: #64b5f6;
-  }
-
-  /* Hero Section */
-  #hero {
-    min-height: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding-top: 100px;
+    padding: 0.2rem 0;
     position: relative;
-    overflow: visible;
-    gap: 22px;
   }
-  #hero h1 {
-    font-size: 3.25rem;
-    font-weight: 900;
-    color: #2196f3;
-    letter-spacing: 4px;
-    margin-bottom: 10px;
-    animation: slideInDown 1s ease forwards;
-    opacity: 0;
-    z-index: 10;
-  }
-  #sih-achievement {
-    font-size: 3.8rem;
-    font-weight: 900;
-    color: #2196f3;
-    letter-spacing: 3px;
-    text-shadow: 0 0 15px #2196f3;
-    user-select: none;
-    animation: pulseGlow 2.5s infinite ease-in-out;
-  }
-  #hero p {
-    font-size: 1.3rem;
-    font-weight: 400;
-    color: #cce6ff;
-    line-height: 1.6;
-    max-width: 650px;
-    animation: fadeInUp 1.3s ease forwards;
-    opacity: 0;
-    z-index: 10;
-  }
-  #hero .btn {
-    margin-top: 8px;
-    background: #2196f3;
-    color: #0f2027;
-    font-weight: 700;
-    font-size: 1.1rem;
-    padding: 14px 32px;
-    border-radius: 40px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(33, 150, 243, 0.5);
-    transition: background 0.3s ease, transform 0.3s ease;
-    z-index: 10;
-  }
-  #hero .btn:hover,
-  #hero .btn:focus {
-    background: #1769aa;
-    transform: scale(1.05);
-  }
-
-  /* Floating background circles animation */
-  #hero .circle {
+  nav ul li a::after {
+    content: '';
     position: absolute;
-    border-radius: 50%;
-    background: rgba(33, 150, 243, 0.12);
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    animation-direction: alternate;
-    filter: blur(10px);
-    z-index: 0;
+    width: 0;
+    height: 2px;
+    background: #61dafb;
+    left: 0; bottom: -6px;
+    transition: width 0.3s ease;
   }
-  .circle1 {
-    width: 140px;
-    height: 140px;
-    top: 20%;
-    left: 15%;
-    animation-name: float1;
-    animation-duration: 6s;
+  nav ul li a:hover::after,
+  nav ul li a.active::after {
+    width: 100%;
   }
-  .circle2 {
-    width: 100px;
-    height: 100px;
-    top: 50%;
-    right: 20%;
-    animation-name: float2;
-    animation-duration: 7.5s;
-  }
-  .circle3 {
-    width: 180px;
-    height: 180px;
-    bottom: 15%;
-    left: 40%;
-    animation-name: float3;
-    animation-duration: 8s;
-  }
-  @keyframes float1 {
-    0% { transform: translateY(0) translateX(0); }
-    100% { transform: translateY(-20px) translateX(15px); }
-  }
-  @keyframes float2 {
-    0% { transform: translateY(0) translateX(0); }
-    100% { transform: translateY(25px) translateX(-10px); }
-  }
-  @keyframes float3 {
-    0% { transform: translateY(0) translateX(0); }
-    100% { transform: translateY(-15px) translateX(12px); }
-  }
-  @keyframes pulseGlow {
-    0%, 100% {
-      text-shadow: 0 0 8px #2196f3, 0 0 20px #2196f3;
-      color: #2196f3;
-    }
-    50% {
-      text-shadow: 0 0 25px #42a5f5, 0 0 40px #42a5f5;
-      color: #42a5f5;
-    }
-  }
-
-  /* Portrait with rapid blue glow animation ring */
-  .portrait-container {
-    position: relative;
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    overflow: visible;
-    margin: 0 auto;
-    filter: drop-shadow(0 0 20px #2196f3);
-  }
-  .portrait-image {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #2196f3;
-    box-shadow: 0 0 25px #2196f3;
-    display: block;
-    position: relative;
-    z-index: 10;
-  }
-  .portrait-ring {
-    position: absolute;
-    top: -15px;
-    left: -15px;
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    border: 6px solid transparent;
-    box-shadow:
-      0 0 30px #2196f3,
-      0 0 60px #2196f3,
-      0 0 90px #2196f3,
-      inset 0 0 40px #2196f3;
-    animation: rotateRing 1.8s linear infinite;
-    z-index: 5;
-  }
-  .orbit-container {
-    position: absolute;
-    top: 0; left: 0;
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 6;
-  }
-  .orbit-dot {
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    background: #2196f3;
-    border-radius: 50%;
-    filter: drop-shadow(0 0 12px #2196f3);
-    opacity: 0.9;
-    animation-timing-function: linear;
-  }
-  .dot1 { top: 50%; left: 100%; transform: translate(-50%, -50%); animation: orbit 1.8s linear infinite; animation-delay: 0s;}
-  .dot2 { top: 15%; left: 85%; transform: translate(-50%, -50%); animation: orbit 1.8s linear infinite; animation-delay: 0.3s;}
-  .dot3 { top: 5%;  left: 50%; transform: translate(-50%, -50%); animation: orbit 1.8s linear infinite; animation-delay: 0.6s;}
-  .dot4 { top: 15%; left: 15%; transform: translate(-50%, -50%); animation: orbit 1.8s linear infinite; animation-delay: 0.9s;}
-  .dot5 { top: 50%; left: 0%; transform: translate(-50%, -50%); animation: orbit 1.8s linear infinite; animation-delay: 1.2s;}
-  .dot6 { top: 85%; left: 15%; transform: translate(-50%, -50%); animation: orbit 1.8s linear infinite; animation-delay: 1.5s;}
-  @keyframes rotateRing {
-    0% { transform: rotate(0deg);}
-    100% { transform: rotate(360deg);}
-  }
-  @keyframes orbit {
-    0% { transform: rotate(0deg) translateX(115px) rotate(0deg);}
-    100% { transform: rotate(360deg) translateX(115px) rotate(-360deg);}
-  }
-
-  /* Sections Styling */
+  /* Sections */
   section {
-    margin-top: 100px;
-    padding-bottom: 50px;
+    max-width: 900px;
+    margin: 120px auto 80px auto;
+    padding: 0 1rem;
   }
-  section h2 {
-    font-size: 2rem;
-    font-weight: 800;
-    color: #2196f3;
-    margin-bottom: 20px;
-    border-bottom: 3px solid #2196f3;
-    display: inline-block;
-    padding-bottom: 6px;
-    user-select: none;
-  }
-
-  /* About Section */
-  #about p, #about .card-content {
-    font-size: 1rem;
-    color: #a5c9ff;
-    max-width: 700px;
-    line-height: 1.55;
-  }
-
-  /* Card styles for skills, projects, training */
-  .card {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    padding: 20px 30px;
-    box-shadow: 0 6px 25px rgba(33, 150, 243, 0.3);
-    color: #aecbff;
-    font-weight: 500;
-    user-select: text;
-  }
-  .card a {
-    color: #64b5f6;
-    text-decoration: underline;
-    font-weight: 600;
-  }
-  .card a:hover,
-  .card a:focus {
-    color: #bbdefb;
-  }
-
-  /* Tech Stack Icons container */
-  #skills .tech-stack-container {
+  /* About Me */
+  #about {
     display: flex;
-    flex-wrap: wrap;
-    gap: 36px;
-    justify-content: center;
-    margin-top: 12px;
+    gap: 3rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s forwards 0.2s;
+    align-items: center;
   }
-  .tech-category {
-    flex: 1 1 280px;
-    min-width: 280px;
+  #about img {
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border: 3px solid #61dafb;
+    box-shadow: 0 4px 15px rgba(97, 218, 251, 0.6);
+    transition: transform 0.4s ease;
   }
-  .tech-category-title {
-    font-weight: 700;
-    color: #2196f3;
-    margin-bottom: 12px;
+  #about img:hover {
+    transform: scale(1.1) rotate(5deg);
+  }
+  #about .about-text {
+    color: #cbd5e1;
+    flex: 1;
+  }
+  #about .about-text h1 {
+    font-size: 2.6rem;
+    margin-bottom: 10px;
+  }
+  #about .about-text h2 {
     font-size: 1.2rem;
-    user-select: none;
+    margin-bottom: 15px;
+    color: #61dafb;
+    font-weight: 500;
+  }
+  #about .about-text p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: #a0aec0;
+  }
+  /* Skills */
+  #skills {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s forwards 0.4s;
+  }
+  #skills h2 {
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #61dafb;
+    text-align: center;
+  }
+  .skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  .skill-category {
+    background: rgba(30, 41, 59, 0.7);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+  .skill-category h3 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #61dafb;
+    margin-bottom: 1rem;
+    text-align: center;
+    border-bottom: 2px solid #61dafb;
+    padding-bottom: 0.5rem;
   }
   .tech-icons {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 15px;
+    justify-content: center;
   }
   .tech-icon {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60px;
-    font-size: 0.7rem;
+    width: 70px;
+    font-size: 0.8rem;
     color: #bbdefb;
     user-select: none;
-    cursor: default;
     text-align: center;
+    margin-bottom: 10px;
   }
-  .tech-icon svg,
   .tech-icon img {
-    width: 36px;
-    height: 36px;
-    margin-bottom: 6px;
-    filter: drop-shadow(0 0 3px #2196f3);
+    width: 35px;
+    height: 35px;
+    margin-bottom: 8px;
+    transition: transform 0.3s ease;
   }
-
-  /* Projects Section */
-  #projects .project-card {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 15px 20px;
-    margin-bottom: 15px;
-    box-shadow: 0 0 20px rgba(33, 150, 243, 0.2);
+  .tech-icon:hover img {
+    transform: scale(1.2);
   }
-  #projects .project-title {
-    color: #2196f3;
-    font-weight: 700;
-    margin-bottom: 6px;
+  .hardware-list, .design-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  .hardware-list li, .design-list li {
+    background: rgba(55, 65, 81, 0.5);
+    margin-bottom: 0.8rem;
+    padding: 0.8rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+  .hardware-list li:hover, .design-list li:hover {
+    transform: translateX(5px);
+    background: rgba(55, 65, 81, 0.8);
+  }
+  .hardware-list li::before, .design-list li::before {
+    content: '▹';
+    color: #61dafb;
+    margin-right: 10px;
     font-size: 1.2rem;
   }
-  #projects .project-desc {
-    font-size: 0.95rem;
-    line-height:1.4;
-    margin-bottom: 6px;
-    color: #c5d9ff;
+  /* Projects */
+  #projects {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s forwards 0.6s;
   }
-  #projects .project-link {
-    color: #64b5f6;
-    font-weight: 600;
-    font-size: 0.9rem;
-    word-break: break-word;
+  #projects h2 {
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #61dafb;
+    text-align: center;
   }
-  #projects .project-link:hover,
-  #projects .project-link:focus {
-    color: #bbdefb;
+  .projects-grid {
+    display: grid;
+    gap: 1.8rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
-
-  /* Training Section */
-  #training .card ul {
-    margin-left: 1.2rem;
-    margin-top: 0.5rem;
-    color: #cddfff;
-  }
-  #training .card ul li {
-    margin-bottom: 0.4rem;
-  }
-  #training .card strong {
-    color: #64b5f6;
-  }
-
-  /* Contact Section */
-  #contact form {
-    max-width: 400px;
+  .project-card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px -8px rgba(97, 218, 251, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    justify-content: space-between;
   }
-  #contact label {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: #2196f3;
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px -10px rgba(33, 161, 241, 0.5);
   }
-  #contact input,
-  #contact textarea {
-    padding: 12px 15px;
-    border-radius: 10px;
-    border: none;
-    resize: vertical;
-    font-size: 1rem;
-    font-family: inherit;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    transition: background 0.3s ease;
-    outline-offset: 2px;
+  .project-card h3 {
+    color: #61dafb;
+    margin-bottom: 0.8rem;
   }
-  #contact input:focus,
-  #contact textarea:focus {
-    background: rgba(33, 150, 243, 0.12);
-    outline: 2px solid #2196f3;
+  .project-card p {
+    color: #cbd5e1;
+    flex-grow: 1;
+    margin-bottom: 1rem;
   }
-  #contact button {
-    background: #2196f3;
-    color: #0f2027;
-    font-weight: 700;
-    cursor: pointer;
-    padding: 14px 32px;
-    border-radius: 40px;
-    border: none;
-    box-shadow: 0 8px 20px rgba(33, 150, 243, 0.5);
-    font-size: 1.1rem;
-    transition: background 0.3s ease, transform 0.3s ease;
-  }
-  #contact button:hover,
-  #contact button:focus {
-    background: #1769aa;
-    transform: scale(1.05);
-  }
-
-  /* Footer */
-  footer {
-    margin-top: 60px;
-    padding-top: 30px;
-    border-top: 1px solid #154e9c;
-    text-align: center;
-    font-size: 0.9rem;
-    color: #a3bff7;
-    user-select: none;
-  }
-  .social-icons {
-    margin-top: 15px;
+  .project-links {
+    margin-top: auto;
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    gap: 1rem;
   }
-  .social-icons a {
-    color: #2196f3;
-    font-size: 1.8rem;
-    transition: color 0.3s ease;
-    text-decoration: none;
-    user-select: none;
+  .project-links a {
+    color: #21a1f1;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .project-links a::after {
+    content: '↗';
+    font-size: 0.9rem;
+  }
+  /* Experience */
+  #experience {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s forwards 0.8s;
+  }
+  #experience h2 {
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #61dafb;
+    text-align: center;
+  }
+  .timeline {
+    position: relative;
+    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 3px solid #374151;
+  }
+  .timeline-event {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-left: 1rem;
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: slideInLeft 0.6s forwards;
+  }
+  .timeline-event:nth-child(1) {
+    animation-delay: 0.8s;
+  }
+  .timeline-event:nth-child(2) {
+    animation-delay: 1s;
+  }
+  .timeline-event:nth-child(3) {
+    animation-delay: 1.2s;
+  }
+  .timeline-event:nth-child(4) {
+    animation-delay: 1.4s;
+  }
+  .timeline-event:nth-child(5) {
+    animation-delay: 1.6s;
+  }
+  .timeline-event::before {
+    content: '';
+    position: absolute;
+    left: -14px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    background: #61dafb;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #21a1f1;
+  }
+  .timeline-event h3 {
+    font-size: 1.3rem;
+    color: #61dafb;
+    margin-bottom: 0.5rem;
+  }
+  .timeline-event span {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #a0aec0;
+    margin-bottom: 0.5rem;
+  }
+  .timeline-event p {
+    color: #cbd5e1;
+    line-height: 1.4;
+  }
+  /* Hackathons */
+  #hackathons {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s forwards 0.9s;
+  }
+  #hackathons h2 {
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #61dafb;
+    text-align: center;
+  }
+  .hackathon-grid {
+    display: grid;
+    gap: 1.8rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  .hackathon-card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px -8px rgba(97, 218, 251, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .hackathon-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px -10px rgba(33, 161, 241, 0.5);
+  }
+  .hackathon-card h3 {
+    color: #61dafb;
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+  }
+  .hackathon-card .team-info {
+    color: #a0aec0;
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+    font-style: italic;
+  }
+  .hackathon-card p {
+    color: #cbd5e1;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  .hackathon-links {
+    margin-top: auto;
+  }
+  .hackathon-links a {
+    color: #21a1f1;
+    font-weight: 600;
     display: inline-flex;
     align-items: center;
+    gap: 5px;
   }
-  .social-icons a:hover,
-  .social-icons a:focus {
-    color: #90caf9;
+  .hackathon-links a::after {
+    content: '↗';
+    font-size: 0.9rem;
   }
-
-  .social-icons svg {
-    width: 28px;
-    height: 28px;
-    fill: currentColor;
+  /* Contact */
+  #contact {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s forwards 1s;
+    max-width: 600px;
+    margin: 120px auto 80px auto;
+    padding: 2rem;
+    background: rgba(15, 32, 39, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(33, 161, 241, 0.3);
   }
-
+  #contact h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    color: #61dafb;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  input, textarea {
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: none;
+    background: #374151;
+    color: #e2e8f0;
+    font-size: 1rem;
+    resize: none;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  input:focus, textarea:focus {
+    outline: none;
+    background: #1f2937;
+    box-shadow: 0 0 0 2px #21a1f1;
+  }
+  button {
+    background: #21a1f1;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 12px;
+    color: #e2e8f0;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  button:hover {
+    background: #0f95d6;
+  }
+  button:active {
+    transform: scale(0.98);
+  }
+  /* Social Links */
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.8rem 1.2rem;
+    background: rgba(30, 41, 59, 0.7);
+    border-radius: 8px;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  .social-link:hover {
+    transform: translateY(-5px);
+    background: rgba(30, 41, 59, 0.9);
+  }
+  .social-link img {
+    width: 24px;
+    height: 24px;
+  }
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 30px 10px;
+    font-size: 0.9rem;
+    color: #64748b;
+    border-top: 1px solid #374151;
+    margin-top: 2rem;
+  }
+  .email-contact {
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+  .email-contact a {
+    color: #21a1f1;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
   /* Animations */
-  @keyframes slideInDown {
-    from {
-      transform: translateY(-60px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
   @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0px);
     }
   }
-
+  @keyframes slideInLeft {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
   /* Responsive */
-  @media (max-width: 600px) {
-    html, body {
-      height: 100%;
-    }
-    header nav {
+  @media (max-width: 768px) {
+    #about {
       flex-direction: column;
-      gap: 10px;
+      text-align: center;
     }
-    #skills .tech-stack-container {
-      flex-direction: column;
-      gap: 28px;
+    #about img {
+      margin: auto;
     }
-    #skills .tech-category {
-      min-width: auto;
-      width: 100%;
+    nav ul {
+      gap: 1.2rem;
     }
-    #hero h1 {
-      font-size: 2.25rem;
+    .skills-container {
+      grid-template-columns: 1fr;
     }
-    #sih-achievement {
-      font-size: 2.7rem;
+    .social-links {
+      gap: 1rem;
     }
-    #hero p {
-      font-size: 1rem;
-      max-width: 90%;
-    }
-    .portrait-container {
-      width: 160px;
-      height: 160px;
-    }
-    .portrait-image {
-      width: 160px;
-      height: 160px;
-      border: 4px solid #2196f3;
-      box-shadow: 0 0 15px #2196f3;
-    }
-    .portrait-ring,
-    .orbit-container {
-      width: 185px;
-      height: 185px;
-      top: -12px;
-      left: -12px;
+    .social-link {
+      padding: 0.6rem 1rem;
     }
   }
-
 </style>
 </head>
 <body>
-
-<header>
   <nav>
-    <div class="logo" tabindex="0" aria-label="Prajwal Kudapane Portfolio">Prajwal Kudapane</div>
-    <ul>
-      <li><a href="#hero" tabindex="0">Home</a></li>
-      <li><a href="#about" tabindex="0">About</a></li>
-      <li><a href="#skills" tabindex="0">Tech Stack</a></li>
-      <li><a href="#projects" tabindex="0">Projects</a></li>
-      <li><a href="#training" tabindex="0">Training</a></li>
-      <li><a href="#contact" tabindex="0">Contact</a></li>
-    </ul>
-    <a href="https://github.com/prajwal-ku" target="_blank" rel="noopener noreferrer" class="github-btn" aria-label="GitHub Profile">
-      GitHub Profile
-    </a>
-  </nav>
-</header>
-
-<main class="container" role="main">
-
-  <section id="hero" aria-label="Introduction">
-    <div class="circle circle1"></div>
-    <div class="circle circle2"></div>
-    <div class="circle circle3"></div>
-
-    <div class="portrait-container" aria-label="Portrait image of Prajwal Kudapane">
-      <img class="portrait-image" src="C:\Users\hp\OneDrive\Desktop\portfolio/prajwal.jpg" alt="Prajwal Kudapane LinkedIn Profile Photo" />
-      <div class="portrait-ring"></div>
-      <div class="orbit-container" aria-hidden="true">
-        <div class="orbit-dot dot1"></div>
-        <div class="orbit-dot dot2"></div>
-        <div class="orbit-dot dot3"></div>
-        <div class="orbit-dot dot4"></div>
-        <div class="orbit-dot dot5"></div>
-        <div class="orbit-dot dot6"></div>
-      </div>
-    </div>
-
-    <h1 tabIndex="0" aria-label="Welcome to my portfolio">Hello, I'm Prajwal Kudapane</h1>
-    <div id="sih-achievement" aria-label="SIH 2024 Finalist Achievement" tabindex="0">SIH 2024 Finalist</div>
-    <p tabIndex="0">Computer Science student at V.E.S Institute of Technology, passionate about IoT, ethical hacking, and full-stack development.</p>
-    <button class="btn" type="button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" aria-label="Contact me">Contact Me</button>
-  </section>
-
-  <section id="about" aria-labelledby="about-title">
-    <h2 id="about-title">About Me</h2>
-    <p>I have a strong interest in IoT systems, ethical hacking, and full-stack development. I have hands-on experience with hardware components like RFID scanners, GPS modules, GSM units, RTCs, and ESP32 in academic and hackathon projects. I build secure and efficient mobile applications with inbuilt local databases and Wi-Fi communication, avoiding dependencies on cloud platforms like Firebase.</p>
-    <p>Member of ElectroCode Systems Labs and CryptoSecure Solution. Finalist at SIH 2024. Completed coursework in IoT architecture and regularly participate in workshops and hackathons. I believe in merging smart tech with real-world solutions and am passionate about learning, experimenting, and building systems that matter.</p>
-  </section>
-
-  <section id="skills" aria-labelledby="skills-title">
-    <h2 id="skills-title">Tech Stack & Skills</h2>
-    <div class="tech-stack-container" tabindex="0">
-
-      <div class="tech-category" aria-label="Frontend skills">
-        <div class="tech-category-title">Frontend</div>
-        <div class="tech-icons">
-          <div class="tech-icon" title="HTML5" aria-label="HTML5">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"/>
-            HTML5
-          </div>
-          <div class="tech-icon" title="CSS3" aria-label="CSS3">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"/>
-            CSS3
-          </div>
-          <div class="tech-icon" title="JavaScript" aria-label="JavaScript">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"/>
-            JS
-          </div>
-          <div class="tech-icon" title="ReactJS" aria-label="ReactJS">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="ReactJS"/>
-            ReactJS
-          </div>
-          <div class="tech-icon" title="Chart.js" aria-label="Chart.js">
-            <img src="C:\Users\hp\OneDrive\Desktop\portfolio/chartjs.png" alt="Chart.js"/>
-            Chart.js
-          </div>
-        </div>
-      </div>
-
-      <div class="tech-category" aria-label="Backend skills">
-        <div class="tech-category-title">Backend</div>
-        <div class="tech-icons">
-          <div class="tech-icon" title="NodeJS" aria-label="NodeJS">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="NodeJS"/>
-            NodeJS
-          </div>
-          <div class="tech-icon" title="ExpressJS" aria-label="ExpressJS">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="ExpressJS"/>
-            ExpressJS
-          </div>
-          <div class="tech-icon" title="MongoDB" aria-label="MongoDB">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB"/>
-            MongoDB
-          </div>
-          <div class="tech-icon" title="MySQL" aria-label="MySQL">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/>
-            MySQL
-          </div>
-          <div class="tech-icon" title="Firebase" aria-label="Firebase">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase"/>
-            Firebase
-          </div>
-        </div>
-      </div>
-
-      <div class="tech-category" aria-label="Programming languages and general skills">
-        <div class="tech-category-title">Languages & Tools</div>
-        <div class="tech-icons" style="justify-content:flex-start;">
-          <div class="tech-icon" title="C Language" aria-label="C Language">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C"/>
-            C
-          </div>
-          <div class="tech-icon" title="Java" aria-label="Java">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"/>
-            Java
-          </div>
-          <div class="tech-icon" title="Python" aria-label="Python">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"/>
-            Python
-          </div>
-          <div class="tech-icon" title="DSA" aria-label="Data Structures and Algorithms">
-            <svg fill="#2196f3" width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 7v6c0 5 8 9 8 9s8-4 8-9V7l-8-5z"/></svg>
-            DSA
-          </div>
-          <div class="tech-icon" title="Android Studio" aria-label="Android Studio">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" alt="Android Studio"/>
-            Android
-          </div>
-        </div>
-      </div>
-
-      <div class="tech-category" aria-label="Circuit design tools">
-        <div class="tech-category-title">Circuit Designing</div>
-        <div class="tech-icons">
-          <div class="tech-icon" title="EasyEDA" aria-label="EasyEDA Circuit Design">
-            <img src="C:\Users\hp\OneDrive\Desktop\portfolio/easyeda.png" alt="EasyEDA" style="width:36px; height:36px;"/>
-            EasyEDA
-          </div>
-          <div class="tech-icon" title="Multisim" aria-label="Multisim Circuit Simulator">
-            <img src="C:\Users\hp\OneDrive\Desktop\portfolio/multisim.png" alt="Multisim" style="width:36px; height:36px;"/>
-            Multisim
-          </div>
-          <div class="tech-icon" title="Proteus" aria-label="Proteus Circuit Simulator">
-            <img src="C:\Users\hp\OneDrive\Desktop\portfolio/proteus.png" alt="Proteus" style="width:36px; height:36px;"/>
-            Proteus
-          </div>
-        </div>
-      </div>
-
-      <div class="tech-category" aria-label="Hardware skills">
-        <div class="tech-category-title">Hardware Skills</div>
-        <div class="tech-icons" style="justify-content:center;">
-          <div class="tech-icon" title="PCB Design" aria-label="PCB Design">
-            <svg fill="#2196f3" width="36" height="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M19.21 2.51L10.5 10.75 4.26 6.19l-.01.01v11s2.25.84 2.25 3 1.75 2.25 1.75 2.25 4.5-1 6-4c1.5-3 .75-6 3.5-7s4.5-2.25 4.5-2.25l-3-5.27z"/></svg>
-            PCB Design
-          </div>
-          <div class="tech-icon" title="Embedded Systems & IoT" aria-label="Embedded Systems & IoT">
-            <svg fill="#2196f3" width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v3h-2v3h2v3a2 2 0 0 1-2 2h-3v-3a2 2 0 0 1-2-2v3h-3a2 2 0 0 1-2-2v-3h2v-3h-2v-3a2 2 0 0 1 2-2h3V4a2 2 0 0 1 2-2z"/></svg>
-            Embedded & IoT
-          </div>
-          <div class="tech-icon" title="Arduino" aria-label="Arduino">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" alt="Arduino"/>
-            Arduino
-          </div>
-          <div class="tech-icon" title="ESPRESSIF" aria-label="ESP32">
-            <img src="C:\Users\hp\OneDrive\Desktop\portfolio/esp.png" alt="ESP32" style="width:36px; height:36px;"/>
-            ESP32
-          </div>
-          <div class="tech-icon" title="NodeMCU" aria-label="NodeMCU">
-            <img src="C:\Users\hp\OneDrive\Desktop\portfolio/nodemcu.png" alt="NodeMCU" style="width:36px; height:36px;"/>
-            NodeMCU
-          </div>
-          <div class="tech-icon" title="Circuit Testing & Troubleshooting" aria-label="Circuit Testing & Troubleshooting">
-            <svg fill="#2196f3" width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M9 2v3H4v1h1v13H4v1h5v2h6v-2h5v-1h-1V6h1V5h-5V2H9z"/></svg>
-            Circuit Testing
-          </div>
-          <div class="tech-icon" title="Soldering" aria-label="Soldering">
-            <svg fill="#2196f3" width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M20 4v4h-3l2 6h-3l-1-3H7v4l-5-5V2h18z"/></svg>
-            Soldering
-          </div>
-          <div class="tech-icon" title="Abacus Proficiency" aria-label="Abacus Proficiency">
-            <svg fill="#2196f3" width="36" height="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="6" cy="9" r="2"/><circle cx="12" cy="15" r="2"/><circle cx="18" cy="9" r="2"/><line x1="4" y1="21" x2="20" y2="21" stroke="#2196f3" stroke-width="2"/></svg>
-            Abacus
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="projects" aria-labelledby="projects-title">
-    <h2 id="projects-title">Projects</h2>
-    <div class="project-card" tabindex="0" aria-label="Project OTP BASED DOOR LOCK SYSTEM">
-      <h3 class="project-title">OTP BASED DOOR LOCK SYSTEM</h3>
-      <p class="project-desc">Provides additional security with OTP authentication for smart home door locks, involving encryption and smart home protocols.</p>
-      <a class="project-link" href="https://github.com/prajwal-ku/OTP-BASED-DOOR-LOCK-SYSTEM-USING-ARDUINO-UNO" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-    </div>
-    <div class="project-card" tabindex="0" aria-label="Project Graphical-Visualization-Of-Library-Data-Student-In-Out-Data">
-      <h3 class="project-title">Graphical-Visualization-Of-Library-Data-Student-In-Out-Data</h3>
-      <p class="project-desc">Interactive graphical interface to track library attendance and retrieve the top 10 library users.</p>
-      <a class="project-link" href="https://github.com/prajwal-ku/Graphical-Visualization-Of-Library-Data-Student-In-Out-Data-" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-    </div>
-    <div class="project-card" tabindex="0" aria-label="Project Farmer Pond Data Analysis">
-      <h3 class="project-title">Farmer Pond Data Analysis</h3>
-      <p class="project-desc">Analyzes pond data for water management to aid farmers in sustainable agriculture practices.</p>
-      <a class="project-link" href="https://github.com/prajwal-ku/Farmer_Pond" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-    </div>
-  </section>
-
-  <section id="training" aria-labelledby="training-title">
-    <h2 id="training-title">Training and Workshops</h2>
-    <div class="card" tabindex="0">
+    <div class="nav-container">
+      <div class="logo">Prajwal Kudapane</div>
       <ul>
-        <li><strong>ECLIPSE PRISM MEDICAL DEVICES PVT. LTD.</strong> - Electrosurgical unit, Electrosurgical light, footswitch, ZigBee firmware & SOP (exposure of assembly and making).</li>
-        <li><strong>AUTOMOTIVE ELECTRONICS</strong> - 3-Axis Robot, Pick & Place machine, Reflow Soldering Machine (SMT) & Laser Printer (exposure of handling).</li>
-        <li><strong>DATA SCIENCE USING PYTHON</strong> (Workshop)</li>
-        <li><strong>C2S (CHIP TO START-UP)</strong> (Workshop)</li>
-        <li><strong>TECH BOOT CAMP DAY: 4</strong> IoT & Database (Workshop Coordinator)</li>
+        <li><a href="#about" class="active">About Me</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#hackathons">Hackathons</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
+  </nav>
+
+  <section id="about" tabindex="0">
+    <img src="C:\Users\hp\OneDrive\Desktop\portfolio/prajwal.jpg" alt="Prajwal Kudapane" />
+    <div class="about-text">
+      <h1>Hello, I'm Prajwal Kudapane</h1>
+      <h2>Electronics & Computer Science Student at V.E.S Institute of Technology | IoT & Cybersecurity | SIH 2024 Finalist</h2>
+      <p>I combine hardware and software skills to build innovative solutions that bridge the physical and digital worlds. Passionate about IoT, ethical hacking, and full-stack development, I bring a unique perspective to problem-solving, creating systems that are both technically robust and user-friendly.</p>
+    </div>
   </section>
 
-  <section id="contact" aria-labelledby="contact-title">
-    <h2 id="contact-title">Contact Me</h2>
-    <form onsubmit="handleSubmit(event)" aria-label="Contact form">
-      <label for="name">Name</label>
-      <input id="name" name="name" type="text" required placeholder="Your name" aria-required="true" />
+  <section id="skills" tabindex="0">
+    <h2>Technical Skills</h2>
+    <div class="skills-container">
+   <div class="skill-category" style="margin-bottom: 24px;">
+  <h3 style="margin-bottom: 12px;">Frontend Development</h3>
+  <div class="tech-icons" style="display: flex; flex-wrap: wrap; gap: 16px;">
+    <div class="tech-icon" style="display: flex; flex-direction: column; align-items: center; font-size: 14px;">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" style="height: 40px; margin-bottom: 8px;" />
+      HTML5
+    </div>
+    <div class="tech-icon" style="display: flex; flex-direction: column; align-items: center; font-size: 14px;">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" style="height: 40px; margin-bottom: 8px;" />
+      CSS3
+    </div>
+    <div class="tech-icon" style="display: flex; flex-direction: column; align-items: center; font-size: 14px;">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" style="height: 40px; margin-bottom: 8px;" />
+      JavaScript
+    </div>
+    <div class="tech-icon" style="display: flex; flex-direction: column; align-items: center; font-size: 14px;">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" style="height: 40px; margin-bottom: 8px;" />
+      React
+    </div>
+    <div class="tech-icon" style="display: flex; flex-direction: column; align-items: center; font-size: 14px;">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-plain.svg" alt="jQuery" style="height: 40px; margin-bottom: 8px;" />
+      jQuery
+    </div>
+    <div class="tech-icon" style="display: flex; flex-direction: column; align-items: center; font-size: 14px;">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg" alt="Bootstrap" style="height: 40px; margin-bottom: 8px;" />
+      Bootstrap
+    </div>
+     </div>
+</div>
 
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" required placeholder="Your email" aria-required="true" />
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="4" required placeholder="Write your message" aria-required="true"></textarea>
-
-      <button type="submit" aria-label="Send message">Send Message</button>
-    </form>
-    <!--<p style="margin-top:12px; color:#aad1ff;">GitHub Profile: <a href="https://github.com/prajwal-ku" target="_blank" rel="noopener noreferrer" style="color:#2196f3;" aria-label="GitHub Profile Link">https://github.com/prajwal-ku</a></p> -->
-  </section>
-
-</main>
-
-<footer>
-  <div>© 2024 Prajwal Kudapane. All rights reserved.</div>
-  <div class="social-icons" role="list">
-    <a href="https://github.com/prajwal-ku" aria-label="GitHub Profile" role="listitem" target="_blank" rel="noopener noreferrer" tabindex="0" title="GitHub Profile">
-      <!-- Removed octopus emoji -->
-      <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M12 0.297c-6.63 0-12 5.373-12 12 0 5.304 3.438 9.8 8.205 11.387.6.11.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 17.07 3.633 16.7 3.633 16.7c-1.086-.743.083-.728.083-.728 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.809 1.304 3.495.997.108-.775.42-1.305.762-1.605-2.665-.303-5.466-1.337-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.52.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.656.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.435.375.81 1.096.81 2.215 0 1.6-.015 2.89-.015 3.285 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-    </a>
-    <a href="https://www.linkedin.com/in/prajwal-kudapane-9018a0229" aria-label="LinkedIn Profile" role="listitem" target="_blank" rel="noopener noreferrer" tabindex="0" title="LinkedIn Profile">
-      <svg class="linkedin-icon" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.25c-.966 0-1.75-.82-1.75-1.75s.784-1.75 1.75-1.75 1.75.82 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.25h-3v-5.5c0-1.379-1.121-2.5-2.5-2.5s-2.5 1.121-2.5 2.5v5.5h-3v-10h3v1.438c.835-1.21 2.21-2.063 3.812-2.063 2.485 0 4.688 2.06 4.688 4.594v6.031z"/>
-      </svg>
-    </a>
-    <a href="https://instagram.com/prajwal_kudapane" aria-label="Instagram Profile" role="listitem" target="_blank" rel="noopener noreferrer" tabindex="0" title="Instagram Profile">
-      <svg class="instagram-icon" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7.75 2h8.5a5.75 5.75 0 0 1 5.75 5.75v8.5a5.75 5.75 0 0 1-5.75 5.75h-8.5a5.75 5.75 0 0 1-5.75-5.75v-8.5A5.75 5.75 0 0 1 7.75 2zm0 2a3.75 3.75 0 0 0-3.75 3.75v8.5a3.75 3.75 0 0 0 3.75 3.75h8.5a3.75 3.75 0 0 0 3.75-3.75v-8.5a3.75 3.75 0 0 0-3.75-3.75h-8.5zm8.5 1.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4.25 1a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 2a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 0 0 0-6.5z"/>
-      </svg>
-    </a>
+      
+      <div class="skill-category" style="margin-bottom: 24px;">
+  <h3 style="margin-bottom: 12px;">Backend Development</h3>
+  <div class="tech-icons" style="display: flex; flex-wrap: wrap; gap: 16px;">
+    <div class="tech-icon" style="display: flex; flex-direction: column; align-items: center; font-size: 14px;">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" style="height: 40px; margin-bottom: 8px;" />
+      Node.js
+    </div>
+    <div class="tech-icon" style="display: flex; flex-direction: column; align-items: center; font-size: 14px;">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" style="height: 40px; margin-bottom: 8px;" />
+      Express
+    </div>
+    <div class="tech-icon" style="display: flex; flex-direction: column; align-items: center; font-size: 14px;">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" style="height: 40px; margin-bottom: 8px;" />
+      MongoDB
+    </div>
+    <div class="tech-icon" style="display: flex; flex-direction: column; align-items: center; font-size: 14px;">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg" alt="PHP" style="height: 40px; margin-bottom: 8px;" />
+      PHP
+    </div>
+    <div class="tech-icon" style="display: flex; flex-direction: column; align-items: center; font-size: 14px;">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" style="height: 40px; margin-bottom: 8px;" />
+      MySQL
+    </div>
+    <div class="tech-icon" style="display: flex; flex-direction: column; align-items: center; font-size: 14px;">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" style="height: 40px; margin-bottom: 8px;" />
+      Firebase
+    </div>
   </div>
-</footer>
+</div>
+
+      
+      <div class="skill-category">
+        <h3>Programming Languages</h3>
+        <div class="tech-icons">
+          <div class="tech-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+            Python
+          </div>
+          <div class="tech-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />
+            Java
+          </div>
+          <div class="tech-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" />
+            C
+          </div>
+          <div class="tech-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" />
+            C++
+          </div>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h3>Data & Visualization</h3>
+        <div class="tech-icons">
+         <div class="tech-icon">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI" style="height: 40px;" />
+				Power BI
+			</div>
+			
+	
+          <div class="tech-icon">
+			<img src="https://www.chartjs.org/media/logo-title.svg" alt="Chart.js" style="height: 40px;" />
+		Chart.js
+			</div>
+
+          <div class="tech-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" />
+            Pandas
+          </div>
+          <div class="tech-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" />
+            NumPy
+          </div>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h3>Hardware Skills</h3>
+        <ul class="hardware-list">
+          <li>PCB Design & Circuit Prototyping</li>
+          <li>Embedded Systems & IoT Development</li>
+          <li>Microcontrollers: Arduino, ESP32, NodeMCU</li>
+          <li>Circuit Testing & Troubleshooting</li>
+          <li>Soldering (Through hole & SMT)</li>
+          <li>Sensor Integration & Data Acquisition</li>
+        </ul>
+      </div>
+      
+      <div class="skill-category">
+        <h3>Design Tools</h3>
+        <ul class="design-list">
+          <li>EasyEDA (PCB Design)</li>
+          <li>Multisim (Circuit Simulation)</li>
+          <li>Proteus (Embedded Design)</li>
+          <li>Fusion 360 (3D Modeling)</li>
+          <li>Figma (UI/UX Design)</li>
+        </ul>
+      </div>
+      
+      <div class="skill-category">
+        <h3>Other Tools</h3>
+        <div class="tech-icons">
+          <div class="tech-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+            Git
+          </div>
+          <div class="tech-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+            GitHub
+          </div>
+          <div class="tech-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" alt="Android Studio" />
+            Android Studio
+          </div>
+          <div class="tech-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" />
+            VS Code
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" tabindex="0">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card" tabindex="0">
+        <h3>OTP Based Door Lock System</h3>
+        <p>A secure door locking system that uses OTP authentication via GSM module, providing an additional layer of security compared to traditional locking systems. The system integrates Arduino Uno with SIM800L GSM module and electromagnetic lock.</p>
+        <div class="project-links">
+          <a href="https://github.com/prajwal-ku/OTP-BASED-DOOR-LOCK-SYSTEM-USING-ARDUINO-UNO" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="project-card" tabindex="0">
+        <h3>Graphical Visualization of Library Data</h3>
+        <p>A Python application with Tkinter GUI that helps users visualize library attendance data graphically and retrieve the top 10 library users. The system processes CSV data to generate insightful visualizations about library usage patterns.</p>
+        <div class="project-links">
+          <a href="https://github.com/prajwal-ku/Graphical-Visualization-Of-Library-Data-Student-In-Out-Data-" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="project-card" tabindex="0">
+        <h3>Smart Agriculture Monitoring System</h3>
+        <p>An IoT-based solution that monitors soil moisture, temperature, and humidity in agricultural fields using NodeMCU and various sensors. The data is transmitted to a cloud platform for real-time monitoring and analysis.</p>
+        <div class="project-links">
+          <a href="#" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" tabindex="0">
+    <h2>Experience</h2>
+    <div class="timeline">
+      <div class="timeline-event" tabindex="0">
+        <h3>Training at ECLIPSE PRISM MEDICAL DEVICES PVT. LTD.</h3>
+        <span>June 2022 - July 2022</span>
+        <p>Gained hands-on experience with Electrosurgical units, surgical lights, footswitch operations, and ZigBee firmware. Learned about Standard Operating Procedures (SOP) in medical device manufacturing and quality control processes.</p>
+      </div>
+      <div class="timeline-event" tabindex="0">
+        <h3>Training in AUTOMOTIVE ELECTRONICS</h3>
+        <span>May 2024 - June 2024</span>
+        <p>Worked with industrial automation equipment including 3-Axis Robots, Pick & Place machines, Reflow Soldering Machines (SMT), and Laser Printers. Learned about PCB assembly processes in automotive electronics manufacturing.</p>
+      </div>
+	  <div class="timeline-event" tabindex="0">
+        <h3>Training in PAVAN ELECTRO SOURCE</h3>
+        <span>November 2024 - December 2024</span>
+        <p>Worked with industrial automation equipment including 3-Axis Robots, Pick & Place machines, Reflow Soldering Machines (SMT), and Laser Printers. Learned about PCB assembly processes in automotive electronics manufacturing.</p>
+      </div>
+      <div class="timeline-event" tabindex="0">
+        <h3>DATA SCIENCE USING PYTHON Workshop</h3>
+        <span>November 2023</span>
+        <p>Participated in an intensive workshop covering data analysis, visualization, and machine learning fundamentals using Python libraries like NumPy, Pandas, Matplotlib, and Scikit-learn.</p>
+      </div>
+      <div class="timeline-event" tabindex="0">
+        <h3>C2S (CHIP TO START-UP) Workshop</h3>
+        <span>December 2024</span>
+        <p>Attended a workshop on semiconductor technology and hardware startups, covering topics from chip design to product development and entrepreneurship in the hardware space.</p>
+      </div>
+      <div class="timeline-event" tabindex="0">
+        <h3>TECH BOOT CAMP DAY: 4 - IoT & Database</h3>
+        <span>August 2024</span>
+        <p>Served as Workshop Coordinator for a technical bootcamp focused on IoT systems and database management, helping participants build their first IoT projects with database integration.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="hackathons" tabindex="0">
+    <h2>Hackathons</h2>
+    <div class="hackathon-grid">
+      <div class="hackathon-card" tabindex="0">
+        <h3>Smart India Hackathon 2024 Finalist</h3>
+        <div class="team-info">Team: AQISQUAD | Location: Rungta College of Engineering, Bhilai</div>
+        <p>National level Hackathon where our team developed "VayuDrishti" - an AI-powered air quality monitoring and prediction system with IoT sensors and data visualization dashboard.</p>
+        <div class="hackathon-links">
+          <a href="#" target="_blank" rel="noopener">View Solution</a>
+        </div>
+      </div>
+      <div class="hackathon-card" tabindex="0">
+        <h3>Syrus Hackathon</h3>
+        <div class="team-info">Team: AlgoGenius | Location: VES Institute of Technology</div>
+        <p>Developed "CareConnect" - a healthcare platform connecting patients with specialists through telemedicine features, appointment scheduling, and AI-powered symptom analysis.</p>
+        <div class="hackathon-links">
+          <a href="#" target="_blank" rel="noopener">View Solution</a>
+        </div>
+      </div>
+      <div class="hackathon-card" tabindex="0">
+        <h3>Invictus Hackathon</h3>
+        <div class="team-info">Team: CyberCrafters | Location: VES Institute of Technology</div>
+        <p>Created "ResearchHub" - a collaborative platform for academic researchers to share papers, find collaborators, and access research tools with blockchain-based credential verification.</p>
+        <div class="hackathon-links">
+          <a href="#" target="_blank" rel="noopener">View Solution</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" tabindex="0" aria-label="Contact form">
+    <h2>Contact Me</h2>
+    <form id="contactForm" novalidate>
+      <input type="text" name="name" placeholder="Your Name" required aria-required="true" />
+      <input type="email" name="email" placeholder="Your Email" required aria-required="true"/>
+      <textarea name="message" placeholder="Your Message" rows="5" required aria-required="true"></textarea>
+      <button type="submit">Send Message</button>
+      <div id="formMessage" aria-live="polite" style="margin-top:10px;"></div>
+    </form>
+    
+    <div class="social-links">
+      <a href="https://in.linkedin.com/in/prajwal-kudapane-9018a0229" class="social-link" target="_blank" rel="noopener">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" />
+        LinkedIn
+      </a>
+      <a href="https://github.com/prajwal-ku" class="social-link" target="_blank" rel="noopener">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+        GitHub
+      </a>
+      <a href="https://www.instagram.com/prajwal_kudapane/" class="social-link" target="_blank" rel="noopener">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" />
+        Instagram
+      </a>
+      <a href="https://x.com/KudapanePrajwal" class="social-link" target="_blank" rel="noopener">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg" alt="Twitter" />
+        Twitter
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2024 Prajwal Kudapane. All rights reserved.
+    <div class="email-contact">
+      Contact me at: <a href="mailto:prajwalkudapane4@gmail.com">prajwalkudapane4@gmail.com</a>
+    </div>
+  </footer>
 
 <script>
-  // Simple form submission handler
-  function handleSubmit(event) {
-    event.preventDefault();
-    const form = event.target;
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const message = form.message.value.trim();
+  // Navigation active state on scroll
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav ul li a');
 
-    if (!name || !email || !message) {
-      alert('Please fill all the fields.');
-      return;
-    }
-    alert(\`Thank you, \${name}! Your message has been sent.\`);
-    form.reset();
-  }
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (pageYOffset >= (sectionTop - 300)) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  });
+
+  // Smooth scrolling for navigation links
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      window.scrollTo({
+        top: targetSection.offsetTop - 80,
+        behavior: 'smooth'
+      });
+      
+      // Update active class
+      navLinks.forEach(navLink => navLink.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+
+  // Form submission handling
+  const contactForm = document.getElementById('contactForm');
+  const formMessage = document.getElementById('formMessage');
+
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Simulate form submission
+    formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
+    formMessage.style.color = '#4ade80';
+    
+    // Reset form
+    setTimeout(() => {
+      contactForm.reset();
+      formMessage.textContent = '';
+    }, 3000);
+  });
+
+  // Add animation to elements when they come into view
+  const animateOnScroll = () => {
+    const elements = document.querySelectorAll('.timeline-event, .project-card, .hackathon-card, .skill-category');
+    
+    elements.forEach(element => {
+      const elementPosition = element.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight / 1.3;
+      
+      if (elementPosition < screenPosition) {
+        element.style.opacity = '1';
+        element.style.transform = 'translateX(0)';
+      }
+    });
+  };
+
+  window.addEventListener('scroll', animateOnScroll);
+  // Trigger once on page load
+  animateOnScroll();
 </script>
 </body>
 </html>
-
